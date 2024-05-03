@@ -1,5 +1,12 @@
 Based on the architecture diagram, and the steps you have taken so far to upload data and access the application web service, identify at least 2 obvious poor practices as it relates to security.  Include justification.
 
 # Poor practice 1
-IAM Role has full access to all s3 buckets => This violate the least privilege
+IAM Role has full access to all s3 buckets => This violate the least privilege principle. Role should be more specific to resources and actions performed on them.
+
 # Poor practice 2
+All route definitions have DestinationCidrBlock defined as 0.0.0.0/0 => Attacker can transfer information to any IP address within the same VPC and outside of it
+For example: The attacker can potentially exfiltrate data to external servers, including servers on the public internet
+
+# Poor practice 3
+All security groups have ingress and egress rules configured CidrIP 0.0.0.0/0 => Give unwanted communication of attackers from/to any IP Address.
+=> We should restrict ingress and egress: only the necessary IP ranges or specific IP Addresses that should be communicate with your resources
