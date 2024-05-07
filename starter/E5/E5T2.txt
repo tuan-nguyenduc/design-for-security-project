@@ -1,0 +1,41 @@
+## Scan infrastructure as code templates
+
+checkov: https://www.github.com/bridgecrewio/checkov
+terrascan: https://github.com/cesar-rodriguez/terrascan
+
+### Example vulnerability
+checkov: S3 Bucket has an ACL defined which allows public access
+terrascan : Ingress allow traffic from 0.0.0.0/0
+
+
+##Scan AMI’s or containers for OS vulnerabilities
+
+Anchore/grype: https://github.com/anchore/grype/
+Docker Bench: https://github.com/docker/docker-bench-security
+
+### Example vulnerabilities
+
+Anchore/grype (OS vulnerabilities):   " Vulnerability ID:  CVE-2021-1234
+                    Package Name:      openssl
+                    Installed Version: 1.1.1g
+                    Fixed Version:     1.1.1h
+                    Vulnerability URL: https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-1234
+                    Severity:          High
+                    Description:       Description of the vulnerability goes here.
+                    Fixed By:          Upgrading to openssl version 1.1.1h "
+
+Docker Bench: "[FAIL] 1.6.1 - Ensure the container host's root filesystem is not shared"
+
+
+##Scan an AWS environment for cloud configuration vulnerabilities
+
+AWStealth: https://github.com/cyberark/SkyArk/tree/master/AWStealth
+AWS inspector: https://aws.amazon.com/vi/inspector/
+AWS Config: https://aws.amazon.com/config/
+
+### Example vulnerability
+
+AWStealth:  No MFA enable and no constrained permission condition for privileged users
+AWS Inspector:  "Insecure Communication Channel: The application is using an insecure communication channel (HTTP) for transmitting sensitive data"
+AWS Config:" Security Group: sg-12345678 have rule Allow SSH access from 0.0.0.0/0 "
+           
